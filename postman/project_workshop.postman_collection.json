@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "d040dd1d-7965-46dc-a6d9-c504f651e9d5",
+		"name": "project_workshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Insert house",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"should have key mongo_id\", function () {",
+							"    pm.expect(jsonData.data).to.have.property('chicken_farm_id');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\" : \"5630252488\",\n    \"first_name\" : \"pipusana\",\n    \"last_name\" : \"petgumpoom\",\n    \"email\" : \"pipusana.p@gmail.com\",\n    \"gender\" : \"male\",\n    \"age\" : 26,\n    \"picture_url\": \"https://scontent.fbkk12-1.fna.fbcdn.net/v/t1.0-9/1005556_545569122156064_28511899_n.jpg?_nc_cat=101&ccb=2&_nc_sid=174925&_nc_ohc=Wl8T81WCp_oAX-b4-1V&_nc_ht=scontent.fbkk12-1.fna&oh=cb2967395d3e8555a7a33c0bf4cf58b4&oe=60308979\",\n    \"height\": 180,\n    \"weight\": 74.2,\n    \"hobby\": [\"jogging\", \"gaming\"],\n    \"country\" : \"thailand\",\n    \"city\" : \"bangkok\"\n}\n"
+				},
+				"url": {
+					"raw": "{{apiUrl}}/chickenfarms",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"chickenfarms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find house",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Should return data json 12 fields\", function () {",
+							"    pm.expect(Object.keys(jsonData.data[0]).length).to.eql(12);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/chickenfarms/",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"chickenfarms",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find house sort by age order by asc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Should return data json 12 fields\", function () {",
+							"    pm.expect(Object.keys(jsonData.data[0]).length).to.eql(12);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/chickenfarms/?sort_by=age&order=asc",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"chickenfarms",
+						""
+					],
+					"query": [
+						{
+							"key": "sort_by",
+							"value": "age"
+						},
+						{
+							"key": "order",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find house sort by age order by desc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Should return data json 12 fields\", function () {",
+							"    pm.expect(Object.keys(jsonData.data[0]).length).to.eql(12);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/chickenfarms/?sort_by=age&order=desc",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"chickenfarms",
+						""
+					],
+					"query": [
+						{
+							"key": "sort_by",
+							"value": "age"
+						},
+						{
+							"key": "order",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update house",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"should have key mongo_id\", function () {",
+							"    pm.expect(jsonData.data).to.have.property('chicken_farm_id');",
+							"})",
+							"",
+							"pm.test(\"should have key modified_count\", function () {",
+							"    pm.expect(jsonData.data).to.have.property('modified_count');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date_put_down\" : 01-02-2564\n}"
+				},
+				"url": {
+					"raw": "{{apiUrl}}/chickenfarms/001",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"chickenfarms",
+						"001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find house by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Should return data json 12 fields\", function () {",
+							"    pm.expect(Object.keys(jsonData.data).length).to.eql(12);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{apiUrl}}/chickenfarms/001",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"chickenfarms",
+						"001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete house",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"should have key mongo_id\", function () {",
+							"    pm.expect(jsonData.data).to.have.property('chicken_farm_id');",
+							"})",
+							"",
+							"pm.test(\"should have key deleted_count\", function () {",
+							"    pm.expect(jsonData.data).to.have.property('deleted_count');",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "var jsonData = pm.response.json();\n\npm.test(\"should have key mongo_id\", function () {\n    pm.expect(jsonData.data).to.have.property('chicken_farm_id');\n})\n\npm.test(\"should have key modified_count\", function () {\n    pm.expect(jsonData.data).to.have.property('deleted_count');\n})"
+				},
+				"url": {
+					"raw": "{{apiUrl}}/chickenfarms/001",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"chickenfarms",
+						"001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
