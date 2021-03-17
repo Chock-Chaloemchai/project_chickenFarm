@@ -38,11 +38,11 @@ def index():
     return JSONResponse(content={"message": "Chicken farm Info"}, status_code=200)
 
 
-@app.get("/chickenfarms/")  # get เป็นการค้นหา("/students/") คือนักเรียนทุกคน
+@app.get("/chickenfarms/")  # get เป็นการค้นหา("/chickenfarms/") คือข้อมูลทั้งหมด
 def get_chicken_farm(
     sort_by: Optional[str] = None,
     order: Optional[str] = Query(
-        None, min_length=3, max_length=4
+        None, min_length=3, max_length=3
     ),  # ให้ใส่อย่างน้อย 3 แต่ห้ามเกิน 4
 ):
 
@@ -105,8 +105,8 @@ def create_house(chicken_farm: createChickenFarmModel):
 def update_house(
     update_chicken_farm: updateChickenFarmModel,
     chicken_farm_id: str = Path(
-        None, min_length=10, max_length=10
-    ),  # ให้ใส่ค่าเท่ากับ 10 ถ้าไม่เท่าจะ error
+        None, min_length=3, max_length=3
+    ),  # ให้ใส่ค่าเท่ากับ 3 ถ้าไม่เท่าจะ error
 ):
     try:
         updated_chicken_farm_id, modified_count = mongo_db.update(
@@ -134,7 +134,7 @@ def update_house(
 
 
 @app.delete("/chickenfarms/{chicken_farm_id}")
-def delete_house_by_id(chicken_farm_id: str = Path(None, min_length=10, max_length=10)):
+def delete_house_by_id(chicken_farm_id: str = Path(None, min_length=3, max_length=3)):
     try:
         deleted_chicken_farm_id, deleted_count = mongo_db.delete(
             chicken_farm_id

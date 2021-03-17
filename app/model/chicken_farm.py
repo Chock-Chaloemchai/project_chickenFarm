@@ -18,9 +18,8 @@ class createChickenFarmModel(BaseModel):
 
 
 class updateChickenFarmModel(BaseModel):
-    amount: int
-    age_mount: int
-    amount_food_kg: float
-    amount_water_liter: float
-    temperature: str
-    last_date_disinfectant: str
+    amount: Optional[int]
+    age_mount: Optional[int]
+    amount_food_kg: Optional[float]
+    amount_water_liter: Optional[float]
+    temperature: Optional[str]

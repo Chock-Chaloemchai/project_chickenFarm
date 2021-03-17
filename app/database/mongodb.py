@@ -57,7 +57,7 @@ class MongoDB:
             # เที่ยบกับการ update ใน mongo
             {"id": chicken_farm_id},  # query
             {  # update_data
-                "$set": chicken_farm.dict(exclude_unset=True)  # แปลงให้เป็น dict
+                "$set": update_chicken_farm.dict(exclude_unset=True)  # แปลงให้เป็น dict
             },
         )
         return [
