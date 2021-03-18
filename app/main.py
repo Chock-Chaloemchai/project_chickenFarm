@@ -62,7 +62,7 @@ def get_chicken_farm(
 )  # path parametor #get เป็นการค้นหา("/students/") คือนักเรียนตาม id ของแต่ละคน
 def get_chicken_farm_id(
     chicken_farm_id: str = Path(None, min_length=3, max_length=3)
-):  # ใส่ค่าต้องเท่ากับ 10 ใช้ Path
+):  # ใส่ค่าต้องเท่ากับ 3 ใช้ Path
     try:
         result = mongo_db.find_one(chicken_farm_id)  # หา id ที่เรากำหนด
     except:
