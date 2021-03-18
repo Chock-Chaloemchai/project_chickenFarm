@@ -10,7 +10,7 @@ class createChickenFarmModel(BaseModel):
     type_chicken: str
     amount: int
     date_put_down: str
-    age_mount: int
+    age_month: int
     amount_food_kg: float
     amount_water_liter: float
     temperature: str
@@ -19,7 +19,7 @@ class createChickenFarmModel(BaseModel):
 
 class updateChickenFarmModel(BaseModel):
     amount: Optional[int]
-    age_mount: Optional[int]
+    age_month: Optional[int]
     amount_food_kg: Optional[float]
     amount_water_liter: Optional[float]
     temperature: Optional[str]
