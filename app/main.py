@@ -43,7 +43,7 @@ def get_chicken_farm(
     sort_by: Optional[str] = None,
     order: Optional[str] = Query(
         None, min_length=3, max_length=3
-    ),  # ให้ใส่อย่างน้อย 3 แต่ห้ามเกิน 4
+    ),  # ให้ใส่อย่างน้อย 3 แต่ห้ามเกิน 3
 ):
 
     try:

@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 class createChickenFarmModel(BaseModel):
     id: str = Field(
         min_length=3, max_length=3
-    )  # lengthต้องเท่ากับ 10 คำจำกัดความคือ Field
+    )  # lengthต้องเท่ากับ 3 คำจำกัดความคือ Field
     type_chicken: str
     amount: int
     date_put_down: str
