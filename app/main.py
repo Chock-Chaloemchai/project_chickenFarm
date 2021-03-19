@@ -42,8 +42,8 @@ def index():
 def get_chicken_farm(
     sort_by: Optional[str] = None,
     order: Optional[str] = Query(
-        None, min_length=3, max_length=3
-    ),  # ให้ใส่อย่างน้อย 3 แต่ห้ามเกิน 3
+        None, min_length=3, max_length=6
+    ),  # ให้ใส่อย่างน้อย 3 แต่ห้ามเกิน 6
 ):
 
     try:
@@ -59,7 +59,7 @@ def get_chicken_farm(
 
 @app.get(
     "/chickenfarms/{chicken_farm_id}"
-)  # path parametor #get เป็นการค้นหา("/students/") คือนักเรียนตาม id ของแต่ละคน
+)  # path parametor #get เป็นการค้นหา("/chickenfarms/") ตาม id
 def get_chicken_farm_id(
     chicken_farm_id: str = Path(None, min_length=3, max_length=3)
 ):  # ใส่ค่าต้องเท่ากับ 3 ใช้ Path
