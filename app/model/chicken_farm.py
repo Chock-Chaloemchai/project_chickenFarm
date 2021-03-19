@@ -15,6 +15,8 @@ class createChickenFarmModel(BaseModel):
     amount_water_liter: float
     temperature: str
     last_date_disinfectant: str
+    latitude: float
+    longitude: float
 
 
 class updateChickenFarmModel(BaseModel):
